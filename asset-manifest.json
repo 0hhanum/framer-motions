@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/0hhanum/framer-motions/static/js/main.31877103.js",
-    "index.html": "/0hhanum/framer-motions/index.html",
-    "main.31877103.js.map": "/0hhanum/framer-motions/static/js/main.31877103.js.map"
+    "main.js": "/framer-motions-demo/static/js/main.aeb76289.js",
+    "index.html": "/framer-motions-demo/index.html",
+    "main.aeb76289.js.map": "/framer-motions-demo/static/js/main.aeb76289.js.map"
   },
   "entrypoints": [
-    "static/js/main.31877103.js"
+    "static/js/main.aeb76289.js"
   ]
 }
