@@ -3,7 +3,7 @@ import ChainCircles from "./ChainCircles";
 import { IScreenRefProps } from "./ScreenComponent";
 import Gestures from "./Gestures";
 import Drag from "./Drag";
-import C4 from "./C4";
+import MotionValue from "./MotionValue";
 import { useEffect, useRef, useState } from "react";
 
 const Wrapper = styled.div`
@@ -63,7 +63,9 @@ function App() {
           />
         ) : null}
         {currentRefIndex <= 2 ? (
-          <Drag ref={(el: IScreenRefProps) => (screenRefs.current[1] = el)} />
+          <MotionValue
+            ref={(el: IScreenRefProps) => (screenRefs.current[1] = el)}
+          />
         ) : null}
         {currentRefIndex <= 3 && currentRefIndex > 0 ? (
           <Gestures
@@ -71,7 +73,7 @@ function App() {
           />
         ) : null}
         {currentRefIndex <= 4 && currentRefIndex > 1 ? (
-          <C4 ref={(el: IScreenRefProps) => (screenRefs.current[3] = el)} />
+          <Drag ref={(el: IScreenRefProps) => (screenRefs.current[3] = el)} />
         ) : null}
         {currentRefIndex !== screenRefs.current?.length - 1 ? (
           <ButtonDiv position="right">

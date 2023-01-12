@@ -7,6 +7,8 @@ const Wrapper = styled(motion.div)`
   width: 100%;
   height: 100%;
   background: linear-gradient(to right, pink, green);
+  color: black;
+  font-weight: lighter;
 `;
 const wrapperVariants = {
   hover: { borderRadius: "50%", scale: 1.5 },

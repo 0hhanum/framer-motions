@@ -15,6 +15,8 @@ const Box = styled(motion.div)`
   display: flex;
   justify-content: center;
   align-items: center;
+  color: white;
+  font-weight: bold;
   background: radial-gradient(
       circle at 50% 0,
       rgba(255, 0, 0, 0.5),

@@ -4,7 +4,8 @@ import ScreenComponent, { IScreenRefProps } from "./ScreenComponent";
 import { forwardRef, useImperativeHandle, useRef, useState } from "react";
 
 const Circle = styled(motion.div)`
-  background: tomato;
+  background: whitesmoke;
+  opacity: 0.2;
   height: 75px;
   width: 75px;
   place-self: center;

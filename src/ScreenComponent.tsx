@@ -5,8 +5,11 @@ import { forwardRef, ReactNode, useImperativeHandle, useRef } from "react";
 interface IScreenProps {
   children: ReactNode;
   handleComponentShow?: (isShown: boolean) => void;
+  hasOwnWrapper?: boolean;
 }
-
+interface IBox {
+  hasOwnWrapper?: boolean;
+}
 export interface IScreenRefProps {
   handleSetMoveToRight: () => void;
   handleSetMoveToLeft: () => void;
@@ -14,13 +17,14 @@ export interface IScreenRefProps {
   handleSetComeFromLeft: () => void;
   renderFirstComponent: () => void;
 }
-const Box = styled(motion.div)`
+const Box = styled(motion.div)<IBox>`
   margin: 0px calc(50% - 100px);
   width: 200px;
   height: 200px;
   border-radius: 20px;
   display: none; // comeFrom 함수 사용으로 grid로 전환
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: ${(props) =>
+    props.hasOwnWrapper ? "transparent" : "rgba(255, 255, 255, 0.2)"};
   position: absolute;
 `;
 
@@ -95,7 +99,11 @@ const ScreenComponent = forwardRef<IScreenRefProps, IScreenProps>(
       },
     }));
     return (
-      <Box animate={animationController} ref={boxRef}>
+      <Box
+        animate={animationController}
+        ref={boxRef}
+        hasOwnWrapper={props.hasOwnWrapper || false}
+      >
         {props.children}
       </Box>
     );
