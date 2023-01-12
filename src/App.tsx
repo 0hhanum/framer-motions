@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import ChainCircles from "./ChainCircles";
 import { IScreenRefProps } from "./ScreenComponent";
-import C2 from "./C2";
+import Gestures from "./Gestures";
 import C3 from "./C3";
 import C4 from "./C4";
 import { useEffect, useRef, useState } from "react";
@@ -63,7 +63,9 @@ function App() {
           />
         ) : null}
         {currentRefIndex <= 2 ? (
-          <C2 ref={(el: IScreenRefProps) => (screenRefs.current[1] = el)} />
+          <Gestures
+            ref={(el: IScreenRefProps) => (screenRefs.current[1] = el)}
+          />
         ) : null}
         {currentRefIndex <= 3 && currentRefIndex > 0 ? (
           <C3 ref={(el: IScreenRefProps) => (screenRefs.current[2] = el)} />
