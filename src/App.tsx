@@ -2,7 +2,7 @@ import styled from "styled-components";
 import ChainCircles from "./ChainCircles";
 import { IScreenRefProps } from "./ScreenComponent";
 import Gestures from "./Gestures";
-import C3 from "./C3";
+import Drag from "./Drag";
 import C4 from "./C4";
 import { useEffect, useRef, useState } from "react";
 
@@ -63,12 +63,12 @@ function App() {
           />
         ) : null}
         {currentRefIndex <= 2 ? (
-          <Gestures
-            ref={(el: IScreenRefProps) => (screenRefs.current[1] = el)}
-          />
+          <Drag ref={(el: IScreenRefProps) => (screenRefs.current[1] = el)} />
         ) : null}
         {currentRefIndex <= 3 && currentRefIndex > 0 ? (
-          <C3 ref={(el: IScreenRefProps) => (screenRefs.current[2] = el)} />
+          <Gestures
+            ref={(el: IScreenRefProps) => (screenRefs.current[2] = el)}
+          />
         ) : null}
         {currentRefIndex <= 4 && currentRefIndex > 1 ? (
           <C4 ref={(el: IScreenRefProps) => (screenRefs.current[3] = el)} />

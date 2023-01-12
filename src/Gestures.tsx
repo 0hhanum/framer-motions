@@ -7,11 +7,10 @@ const Wrapper = styled(motion.div)`
   width: 100%;
   height: 100%;
   background: linear-gradient(to right, pink, green);
-  color: black;
 `;
 const wrapperVariants = {
-  start: {},
-  end: {},
+  hover: { borderRadius: "50%", scale: 1.5 },
+  click: { borderRadius: 0 },
 };
 const Gestures = forwardRef<IScreenRefProps>(function Gestures(props, ref) {
   const [isComponentShown, setIsComponentShown] = useState(false);
@@ -27,8 +26,9 @@ const Gestures = forwardRef<IScreenRefProps>(function Gestures(props, ref) {
   return (
     <ScreenComponent ref={screenRef} handleComponentShow={handleComponentShow}>
       <Wrapper
-        whileTap={{ borderRadius: 0 }}
-        whileHover={{ borderRadius: "50%", scale: 1.5 }}
+        variants={wrapperVariants}
+        whileTap="click"
+        whileHover="hover"
         onMouseEnter={() => onHover(true)}
         onMouseLeave={() => onHover(false)}
       >
