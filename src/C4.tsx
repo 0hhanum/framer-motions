@@ -1,13 +1,7 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import ScreenComponent, { IScreenRefProps } from "./ScreenComponent";
-import {
-  forwardRef,
-  useEffect,
-  useImperativeHandle,
-  useRef,
-  useState,
-} from "react";
+import { forwardRef, useImperativeHandle, useRef, useState } from "react";
 
 const Circle = styled(motion.div)`
   background-color: green;

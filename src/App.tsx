@@ -46,7 +46,7 @@ function App() {
     setCurrentRefIndex((current) => current - 1);
   };
   useEffect(() => {
-    screenRefs.current[currentRefIndex]?.renderFirstComponent();
+    screenRefs.current[0]?.renderFirstComponent();
     // 첫 번째 컴포넌트만 렌더링 (나머지는 display: none)
   }, []);
   return (
