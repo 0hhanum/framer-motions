@@ -13,18 +13,14 @@ const wrapperVariants = {
   click: { borderRadius: 0 },
 };
 const Gestures = forwardRef<IScreenRefProps>(function Gestures(props, ref) {
-  const [isComponentShown, setIsComponentShown] = useState(false);
   const [isHover, setIsHover] = useState(false);
   const screenRef = useRef<IScreenRefProps>(null);
-  const handleComponentShow = (isShown: boolean) => {
-    setIsComponentShown(isShown);
-  };
   useImperativeHandle(ref, () => screenRef.current as IScreenRefProps);
   const onHover = (isHover: boolean) => {
     setIsHover(isHover);
   };
   return (
-    <ScreenComponent ref={screenRef} handleComponentShow={handleComponentShow}>
+    <ScreenComponent ref={screenRef}>
       <Wrapper
         variants={wrapperVariants}
         whileTap="click"

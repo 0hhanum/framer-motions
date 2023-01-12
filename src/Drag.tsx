@@ -32,19 +32,12 @@ const Box = styled(motion.div)`
       )
       beige;
 `;
-const wrapperVariants = {
-  drag: {},
-};
 const Drag = forwardRef<IScreenRefProps>(function Drag(props, ref) {
-  const [isComponentShown, setIsComponentShown] = useState(false);
   const screenRef = useRef<IScreenRefProps>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const handleComponentShow = (isShown: boolean) => {
-    setIsComponentShown(isShown);
-  };
   useImperativeHandle(ref, () => screenRef.current as IScreenRefProps);
   return (
-    <ScreenComponent ref={screenRef} handleComponentShow={handleComponentShow}>
+    <ScreenComponent ref={screenRef}>
       <Wrapper ref={wrapperRef}>
         <Box drag dragConstraints={wrapperRef}>
           DRAG

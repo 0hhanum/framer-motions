@@ -4,7 +4,7 @@ import { forwardRef, ReactNode, useImperativeHandle, useRef } from "react";
 
 interface IScreenProps {
   children: ReactNode;
-  handleComponentShow: (isShown: boolean) => void;
+  handleComponentShow?: (isShown: boolean) => void;
 }
 
 export interface IScreenRefProps {
@@ -40,7 +40,7 @@ const ScreenComponent = forwardRef<IScreenRefProps, IScreenProps>(
             duration: 0.8,
           },
         });
-        props.handleComponentShow(false);
+        if (props.handleComponentShow) props.handleComponentShow(false);
         (boxRef.current as HTMLDivElement).style.display = "none";
       },
       async handleSetMoveToLeft() {
@@ -54,7 +54,7 @@ const ScreenComponent = forwardRef<IScreenRefProps, IScreenProps>(
             duration: 0.8,
           },
         });
-        props.handleComponentShow(false);
+        if (props.handleComponentShow) props.handleComponentShow(false);
         (boxRef.current as HTMLDivElement).style.display = "none";
       },
       async handleSetComeFromRight() {
@@ -72,7 +72,7 @@ const ScreenComponent = forwardRef<IScreenRefProps, IScreenProps>(
             duration: 0.8,
           },
         });
-        props.handleComponentShow(true);
+        if (props.handleComponentShow) props.handleComponentShow(true);
       },
       async handleSetComeFromLeft() {
         (boxRef.current as HTMLDivElement).style.display = "block";
@@ -87,11 +87,11 @@ const ScreenComponent = forwardRef<IScreenRefProps, IScreenProps>(
             duration: 0.8,
           },
         });
-        props.handleComponentShow(true);
+        if (props.handleComponentShow) props.handleComponentShow(true);
       },
       renderFirstComponent() {
         (boxRef.current as HTMLDivElement).style.display = "block";
-        props.handleComponentShow(true);
+        if (props.handleComponentShow) props.handleComponentShow(true);
       },
     }));
     return (
