@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { motion, useMotionValue } from "framer-motion";
+import { motion, useMotionValue, useTransform } from "framer-motion";
 import ScreenComponent, { IScreenRefProps } from "./ScreenComponent";
 import { forwardRef, useImperativeHandle, useRef, useState } from "react";
 
@@ -9,6 +9,11 @@ const Wrapper = styled(motion.div)`
   background: linear-gradient(to bottom, red, white);
   border-radius: 50%;
   cursor: grab;
+`;
+const Text = styled.span`
+  position: absolute;
+  top: 0;
+  z-index: 10;
 `;
 const wrapperVariants = {
   start: {
@@ -26,10 +31,19 @@ const MotionValue = forwardRef<IScreenRefProps>(function MotionValue(
   ref
 ) {
   const [isComponentShown, setIsComponentShown] = useState(false);
+  const [isTextShown, setIsTextShown] = useState(false);
   const screenRef = useRef<IScreenRefProps>(null);
-  const xPos = useMotionValue(0);
+  const yPos = useMotionValue(0);
+  const scale = useTransform(yPos, [-500, 0], [3, 1]); // yPost -500~0 -> 3~1로 변환
   const handleComponentShow = (isShown: boolean) => {
     setIsComponentShown(isShown);
+    if (isShown) {
+      setTimeout(() => {
+        setIsTextShown(true);
+      }, 2000);
+    } else {
+      setIsTextShown(false);
+    }
   };
   useImperativeHandle(ref, () => screenRef.current as IScreenRefProps);
   return (
@@ -40,12 +54,11 @@ const MotionValue = forwardRef<IScreenRefProps>(function MotionValue(
     >
       {isComponentShown ? (
         <>
-          <span>BOUNCE IT</span>
+          {isTextShown ? <Text>BOUNCE ME</Text> : null}
           <Wrapper
-            style={{ x: xPos }}
+            style={{ y: yPos, scale }}
             drag="y"
             dragSnapToOrigin
-            dragElastic={0.1}
             variants={wrapperVariants}
             initial="start"
             animate="animate"

@@ -15,8 +15,7 @@ const Box = styled(motion.div)`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
-  font-weight: bold;
+  font-weight: lighter;
   background: radial-gradient(
       circle at 50% 0,
       rgba(255, 0, 0, 0.5),
@@ -42,7 +41,7 @@ const Drag = forwardRef<IScreenRefProps>(function Drag(props, ref) {
     <ScreenComponent ref={screenRef}>
       <Wrapper ref={wrapperRef}>
         <Box drag dragConstraints={wrapperRef}>
-          DRAG
+          DRAG ME
         </Box>
       </Wrapper>
     </ScreenComponent>

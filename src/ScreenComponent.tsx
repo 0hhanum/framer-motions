@@ -8,7 +8,7 @@ interface IScreenProps {
   hasOwnWrapper?: boolean;
 }
 interface IBox {
-  hasOwnWrapper?: boolean;
+  hasOwnWrapper: boolean;
 }
 export interface IScreenRefProps {
   handleSetMoveToRight: () => void;
@@ -102,7 +102,7 @@ const ScreenComponent = forwardRef<IScreenRefProps, IScreenProps>(
       <Box
         animate={animationController}
         ref={boxRef}
-        hasOwnWrapper={props.hasOwnWrapper || false}
+        hasOwnWrapper={props.hasOwnWrapper ? props.hasOwnWrapper : false}
       >
         {props.children}
       </Box>
