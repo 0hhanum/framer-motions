@@ -8,24 +8,28 @@ const Wrapper = styled(motion.div)`
   height: 100%;
 `;
 const wrapperVariants = {
-  initial: {},
+  initial: {
+    fill: "rgba(65,105,225, 0)",
+  },
   animate: {
+    fill: ["rgb(65,105,225)", "rgb(255,0,0)"],
     transition: {
       staggerChildren: 0.2,
       delayChildren: 0.1,
+      when: "afterChildren",
+      repeat: Infinity,
+      duration: 0.5,
     },
   },
 };
 const pathVariants = {
   initial: {
     pathLength: 0,
-    fill: "rgba(65,105,225, 0)",
   },
   animate: {
     pathLength: 1,
-    fill: "rgba(65,105,225, 1)",
     transition: {
-      duration: 0.3,
+      duration: 0.5,
     },
   },
 };
@@ -49,7 +53,6 @@ const Svg = forwardRef<IScreenRefProps>(function Svg(props, ref) {
             variants={wrapperVariants}
             initial="initial"
             animate="animate"
-            fill="rgba(65,105,225, 1)"
           >
             <motion.path
               variants={pathVariants}
