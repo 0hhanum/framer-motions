@@ -19,13 +19,13 @@ const wrapperVariants = {
 const pathVariants = {
   initial: {
     pathLength: 0,
-    fill: "rgb(65,105,225, 0)",
+    fill: "rgba(65,105,225, 0)",
   },
   animate: {
     pathLength: 1,
-    fill: "rgb(65,105,225, 1)",
+    fill: "rgba(65,105,225, 1)",
     transition: {
-      duration: 0.5,
+      duration: 0.3,
     },
   },
 };
@@ -49,6 +49,7 @@ const Svg = forwardRef<IScreenRefProps>(function Svg(props, ref) {
             variants={wrapperVariants}
             initial="initial"
             animate="animate"
+            fill="rgba(65,105,225, 1)"
           >
             <motion.path
               variants={pathVariants}
