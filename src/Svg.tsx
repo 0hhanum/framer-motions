@@ -29,7 +29,7 @@ const pathVariants = {
   animate: {
     pathLength: 1,
     transition: {
-      duration: 0.5,
+      duration: 0.2,
     },
   },
 };

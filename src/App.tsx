@@ -5,6 +5,7 @@ import Gestures from "./Gestures";
 import Drag from "./Drag";
 import MotionValue from "./MotionValue";
 import Svg from "./Svg";
+import PresenceAnimation from "./PresenceAnimation";
 import { useEffect, useRef, useState } from "react";
 
 const Wrapper = styled.div`
@@ -30,6 +31,7 @@ const CtrlButton = styled.button`
 `;
 function App() {
   const screenRefs = useRef<(IScreenRefProps | null)[]>([
+    null,
     null,
     null,
     null,
@@ -65,12 +67,12 @@ function App() {
           />
         ) : null}
         {currentRefIndex <= 2 ? (
-          <Svg ref={(el: IScreenRefProps) => (screenRefs.current[1] = el)} />
+          <PresenceAnimation
+            ref={(el: IScreenRefProps) => (screenRefs.current[1] = el)}
+          />
         ) : null}
         {currentRefIndex <= 3 && currentRefIndex > 0 ? (
-          <Gestures
-            ref={(el: IScreenRefProps) => (screenRefs.current[2] = el)}
-          />
+          <Svg ref={(el: IScreenRefProps) => (screenRefs.current[2] = el)} />
         ) : null}
         {currentRefIndex <= 4 && currentRefIndex > 1 ? (
           <Drag ref={(el: IScreenRefProps) => (screenRefs.current[3] = el)} />
@@ -78,6 +80,11 @@ function App() {
         {currentRefIndex <= 5 && currentRefIndex > 2 ? (
           <MotionValue
             ref={(el: IScreenRefProps) => (screenRefs.current[4] = el)}
+          />
+        ) : null}
+        {currentRefIndex <= 6 && currentRefIndex > 3 ? (
+          <Gestures
+            ref={(el: IScreenRefProps) => (screenRefs.current[5] = el)}
           />
         ) : null}
         {currentRefIndex !== screenRefs.current?.length - 1 ? (
