@@ -1,12 +1,13 @@
-import styled from "styled-components";
+import styled, { StyledComponent } from "styled-components";
 import ChainCircles from "./ChainCircles";
 import { IScreenRefProps } from "./ScreenComponent";
 import Gestures from "./Gestures";
 import Drag from "./Drag";
 import MotionValue from "./MotionValue";
 import Svg from "./Svg";
-import PresenceAnimation from "./PresenceAnimation";
-import { useEffect, useRef, useState } from "react";
+import TextAnimation from "./TextAnimation";
+import Scrolling from "./Scrolling";
+import React, { useEffect, useRef, useState } from "react";
 
 const Wrapper = styled.div`
   width: 100vw;
@@ -31,6 +32,7 @@ const CtrlButton = styled.button`
 `;
 function App() {
   const screenRefs = useRef<(IScreenRefProps | null)[]>([
+    null,
     null,
     null,
     null,
@@ -67,7 +69,7 @@ function App() {
           />
         ) : null}
         {currentRefIndex <= 2 ? (
-          <PresenceAnimation
+          <Scrolling
             ref={(el: IScreenRefProps) => (screenRefs.current[1] = el)}
           />
         ) : null}
@@ -85,6 +87,11 @@ function App() {
         {currentRefIndex <= 6 && currentRefIndex > 3 ? (
           <Gestures
             ref={(el: IScreenRefProps) => (screenRefs.current[5] = el)}
+          />
+        ) : null}
+        {currentRefIndex <= 7 && currentRefIndex > 4 ? (
+          <TextAnimation
+            ref={(el: IScreenRefProps) => (screenRefs.current[6] = el)}
           />
         ) : null}
         {currentRefIndex !== screenRefs.current?.length - 1 ? (
